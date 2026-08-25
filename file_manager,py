@@ -1,0 +1,26 @@
+from pathlib import Path
+import shutil
+
+class FileManager:
+
+    def get_all_pdfs(self, folder):
+
+        folder = Path(folder)
+
+        return list(folder.rglob("*.pdf"))
+
+    def create_folder(self, path):
+
+        Path(path).mkdir(parents=True, exist_ok=True)
+
+    def move_file(self, source, destination):
+
+        shutil.move(source, destination)
+
+    def copy_file(self, source, destination):
+
+        shutil.copy2(source, destination)
+
+    def rename(self, old_name, new_name):
+
+        Path(old_name).rename(new_name)
